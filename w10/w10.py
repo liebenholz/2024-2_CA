@@ -18,7 +18,7 @@ def make_A():
     A = ss.lil_matrix((num_points+len(constraints), num_points))
 
     for i in range(num_points):
-        A[i, i] = 1
+        A[i, i] = 1 # <--- build laplacian matrix
         if i > 0:
             A[i, i-1] = -0.5
         if i < num_points-1:
@@ -34,8 +34,8 @@ def make_A():
     return A.tocsc()
 
 def make_b(constraints):
-    b_x = np.zeros(num_points)
-    b_y = np.zeros(num_points)
+    b_x = np.zeros(num_points) # <--- build b vector
+    b_y = np.zeros(num_points) # <--- build b vector
 
     for i in range(num_points):
         b_x[i] += x[i]
